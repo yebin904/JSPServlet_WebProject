@@ -1,0 +1,594 @@
+/* =========================================================
+ 🌿 THEME REFINED - Minimal & Refreshing Travel Vibe
+ 여행 + 곰 + 청량 + 미니멀 (화이트 카드 레이OUT)
+ ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+:root {
+    /* 🎨 COLORS - 청량감을 더하는 색상으로 조정 */
+    --primary: #6C9A8B; /* Misty Moss */
+    --primary-dark: #517D6F;
+    --primary-light: #A8D8C7; /* 서브메뉴 강조용 연한 녹색 */
+    --accent: #FF8C69; /* Accent color for points (e.g., Coral) */
+    --bg: #F8F9FA;      /* 전체 배경을 연한 회색으로 변경 */
+    --surface: #FFFFFF; /* 카드 배경은 흰색 유지 */
+    --border: #E9ECEF;  /* 테두리 색상 연하게 */
+    --text: #212529;    /* 기본 텍스트 색상 진하게 */
+    --text-light: #6C757D; /* 보조 텍스트 색상 */
+    --shadow-soft: 0 8px 30px rgba(0,0,0,0.06); /* 그림자 효과 부드럽게 */
+    --radius: 20px; /* 둥근 모서리 반경 증가 */
+}
+
+/* === 전체 레이OUT === */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: var(--bg); /* 연한 배경색 적용 */
+    color: var(--text);
+    margin: 0;
+    padding-top: 70px; /* 고정 헤더 높이만큼 패딩 추가 */
+    line-height: 1.7;
+    letter-spacing: -0.5px; /* 자간 조절로 가독성 향상 */
+}
+
+/* ========================================================= */
+/* HEADER STYLES START                                       */
+/* ========================================================= */
+
+/* === HEADER 기본 구조 === */
+#main-header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: saturate(180%) blur(5px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-column {
+    flex: 1;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.logo a {
+    color: var(--primary-dark);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.logo a:hover {
+    color: var(--primary);
+    text-decoration: none; /* 호버 시 밑줄 제거 */
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 500;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+.nav-menu a:hover {
+    color: var(--primary);
+    text-decoration: none; /* 호버 시 밑줄 제거 */
+}
+.nav-menu a.active {
+    color: var(--primary);
+    font-weight: 700;
+    border-bottom-color: var(--primary);
+}
+
+.nav-item.has-dropdown {
+    position: relative;
+}
+.nav-item .sub-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    padding: 10px;
+    width: max-content;
+    display: flex;
+    gap: 5px;
+    z-index: 1001;
+    border: 1px solid var(--border);
+}
+.nav-item.has-dropdown:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) translateX(-50%);
+}
+.nav-item .sub-menu a {
+    color: var(--text-light);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    white-space: nowrap;
+    border-bottom: none;
+}
+.nav-item .sub-menu a:hover {
+    background-color: #F8F9FA;
+    color: var(--primary);
+    text-decoration: none; /* 호버 시 밑줄 제거 */
+}
+
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+.search-bar {
+    position: relative;
+}
+.search-bar input {
+    border: 1px solid var(--border);
+    outline: none;
+    background: #F8F9FA;
+    padding: 8px 40px 8px 15px;
+    border-radius: 30px;
+    width: 180px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+.search-bar input:focus {
+    background: var(--surface);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(108, 154, 139, 0.1);
+}
+.search-bar button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    border: none;
+    background: transparent;
+    padding: 0 15px;
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+.search-bar button:hover {
+    color: var(--primary);
+}
+
+.btn-login {
+    padding: 8px 20px;
+    border: 1px solid var(--primary);
+    background-color: transparent;
+    color: var(--primary);
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+.btn-login:hover {
+    background-color: var(--primary);
+    color: white;
+    text-decoration: none; /* 호버 시 밑줄 제거 */
+}
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.95rem;
+}
+.user-info strong {
+    color: var(--primary-dark);
+}
+.btn-logout {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 5px 8px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+.btn-logout:hover {
+    background-color: #f1f3f5;
+    color: var(--text);
+    text-decoration: none; /* 호버 시 밑줄 제거 */
+}
+
+/* ========================================================= */
+/* HEADER STYLES END                                         */
+/* ========================================================= */
+
+/* === 메인 콘텐츠 === */
+main {
+    max-width: 1100px;
+    margin: 40px auto; /* 기본 상하 마진 및 좌우 중앙 정렬 */
+    padding: 0 30px;
+}
+.notice-title h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 50px;
+}
+
+.notice-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    border: none;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+}
+.notice-table thead {
+    border-bottom: 1px solid var(--border);
+}
+.notice-table th {
+    padding: 16px 20px;
+    background: #F8F9FA;
+    font-weight: 600;
+    color: var(--text-light);
+    text-align: center;
+}
+.notice-table th:first-child, .notice-table td:first-child {
+    padding-left: 30px;
+}
+.notice-table th:last-child, .notice-table td:last-child {
+    padding-right: 30px;
+}
+.notice-table .title {
+    text-align: left;
+    font-weight: 600;
+}
+.notice-table .title a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.25s;
+}
+.notice-table .title a:hover {
+    color: var(--primary);
+    text-decoration: none; /* 호버 시 밑줄 제거 */
+}
+.notice-table tbody tr {
+    transition: background-color 0.3s;
+}
+.notice-table tbody tr:hover {
+    background-color: #F8F9FA;
+}
+.notice-table td {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+.notice-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.isnew {
+    display: inline-block;
+    background-color: var(--accent);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 7px;
+    border-radius: 10px;
+    margin-left: 8px;
+    font-weight: 700;
+    vertical-align: middle;
+}
+
+.notice-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.search-box {
+    display: flex;
+    gap: 8px;
+}
+.search-box input[type="text"] {
+    width: 250px;
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    background: var(--surface);
+    transition: all 0.3s;
+}
+.search-box input[type="text"]:focus {
+    outline: none;
+    background: var(--surface);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(108, 154, 139, 0.1);
+}
+.search-box button {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--primary);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+.search-box button:hover {
+    background-color: var(--primary-dark);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+.pagination a, .pagination strong {
+    display: inline-block;
+    min-width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    color: var(--text-light);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.pagination a:hover {
+    background-color: #E9ECEF;
+    color: var(--text);
+    text-decoration: none; /* 호버 시 밑줄 제거 */
+}
+.pagination .active, .pagination strong {
+    background-color: var(--primary);
+    color: #fff;
+    cursor: default;
+}
+
+.table-options {
+    text-align: right;
+}
+
+.btn {
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108, 154, 139, 0.2);
+    text-decoration: none; /* 호버 시 밑줄 제거 */
+}
+
+/* ========================================================= */
+/* MOBILE MENU (HAMBURGER) STYLES START                      */
+/* ========================================================= */
+.hamburger-btn {
+    display: none;
+    background: none; border: none; cursor: pointer;
+    font-size: 1.5rem; color: var(--text); padding: 5px;
+    z-index: 1001;
+}
+
+.mobile-menu-panel {
+    position: fixed; top: 0;
+    right: -100%;
+    width: 320px; max-width: 90%; height: 100%;
+    background-color: var(--surface);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex; flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.mobile-menu-panel.active { right: 0; }
+
+.menu-header {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 15px; margin-bottom: 20px;
+    flex-shrink: 0;
+}
+.close-btn {
+    background: none; border: none; font-size: 1.8rem;
+    cursor: pointer; color: var(--text-light);
+}
+
+.mobile-nav-links {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* =========================================================
+   MOBILE SIDEBAR DROPDOWN STYLES (최종 수정본)
+ ========================================================= */
+
+/* 모바일 메뉴 링크 공통 스타일 (하위 항목 포함) */
+.mobile-nav-links .mobile-nav-item,
+.mobile-nav-links .has-dropdown { /* has-dropdown 컨테이너 */
+    display: block; 
+    border-bottom: 1px solid var(--border);
+}
+
+/* 드롭다운 토글 버튼 스타일 (<a> 태그) */
+.mobile-nav-links .has-dropdown > .dropdown-toggle { 
+    display: flex; /* Flexbox 레이아웃 */
+    justify-content: space-between; /* 양쪽 끝 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    width: 100%; /* 너비 100% */
+    padding: 18px 10px; /* 내부 여백 */
+    background: none; /* 배경 없음 */
+    border: none; /* 테두리 없음 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    cursor: pointer; /* 클릭 가능 표시 */
+    text-decoration: none !important; /* 밑줄 제거 */
+    color: var(--text);
+    font-size: 1.1rem; 
+    font-weight: 500;
+    /* 브라우저 기본 스타일 완전히 제거 */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none; /* 포커스 시 외곽선 제거 */
+}
+
+/* === ⬇️ 여기 추가됨 ⬇️ === */
+/* 다른 프레임워크(예: 부트스트랩)의 기본 화살표(검은색 삼각형) 강제 제거 */
+.mobile-nav-links .has-dropdown > .dropdown-toggle::after {
+    display: none !important;
+    content: none !important; /* 확실하게 제거 */
+}
+
+/* (혹시 <i> 태그일 경우를 대비한 코드) */
+.mobile-nav-links .dropdown-toggle i:not(.dropdown-arrow) {
+    display: none !important;
+}
+/* === ⬆️ 여기까지 ⬆️ === */
+
+
+/* 단일 링크 스타일 (드롭다운 아닌 경우) */
+.mobile-nav-links .mobile-nav-item:not(.has-dropdown) {
+     text-decoration: none !important; /* 밑줄 제거 */
+    color: var(--text);
+    font-size: 1.1rem; 
+    font-weight: 500;
+    padding: 18px 10px; 
+    display: block; /* Ensure it behaves like a block */
+}
+
+/* 모든 링크 hover 시 밑줄 제거 */
+.mobile-nav-links a:hover,
+.mobile-nav-links .dropdown-toggle:hover {
+    text-decoration: none !important;
+    color: var(--primary); /* 호버 시 색상 변경 (선택사항) */
+}
+
+/* Font Awesome 화살표 아이콘 스타일 */
+.mobile-nav-links .dropdown-toggle .dropdown-arrow {
+    font-size: 0.8em; 
+    color: var(--text-light);
+    transition: transform 0.3s ease;
+    margin-left: 10px; /* 텍스트와 아이콘 사이 간격 */
+    flex-shrink: 0; /* 아이콘 크기 유지 */
+    pointer-events: none; /* 아이콘 자체는 클릭 안 되도록 */
+}
+
+/* 서브메뉴 열렸을 때 화살표 회전 */
+.mobile-nav-links .has-dropdown.active > .dropdown-toggle .dropdown-arrow {
+    transform: rotate(180deg); 
+}
+
+/* 서브메뉴 컨테이너 */
+.mobile-sub-menu {
+    display: none; /* 기본 숨김 */
+    padding: 10px 0 10px 15px; 
+    margin: 0 0 5px 0; /* 마진 조정 */
+    border-left: 2px solid var(--primary-light, #A8D8C7); 
+    background-color: transparent; 
+}
+
+/* 서브메뉴 링크 아이템 */
+.mobile-sub-menu a {
+    display: block;
+    text-decoration: none !important; 
+    color: var(--text); 
+    font-size: 1rem; 
+    padding: 12px 15px;
+    border-bottom: none; 
+    border-radius: 8px; 
+    transition: background-color 0.2s ease, color 0.2s ease; 
+}
+
+/* 서브메뉴 링크 hover 시 */
+.mobile-sub-menu a:hover {
+    color: var(--primary); 
+    background-color: #f8f9fa; 
+    text-decoration: none !important; 
+}
+
+/* --- 메뉴 푸터 --- */
+.menu-footer {
+    display: flex; align-items: center; gap: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+}
+.icon-link { font-size: 1.5rem; color: var(--text-light); }
+.icon-link:hover { text-decoration: none; } /* 아이콘 링크 호버 밑줄 제거 */
+.login-link {
+    font-size: 1.1rem; font-weight: 600; color: var(--primary);
+    text-decoration: none; margin-left: auto;
+}
+.login-link:hover { text-decoration: none; } /* 로그인 링크 호버 밑줄 제거 */
+
+
+/* ========================================================= */
+/* RESPONSIVE DESIGN (MEDIA QUERIES) START                   */
+/* ========================================================= */
+@media (max-width: 992px) {
+    .nav-menu,
+    .header-right .search-bar,
+    .header-right .user-info {
+        display: none;
+    }
+    .hamburger-btn { display: block; }
+    .header-inner { padding: 0 20px; }
+    main { padding: 0 20px; } /* 모바일에서 메인 컨텐츠 좌우 여백 */
+}
+
+@media (max-width: 768px) {
+    .notice-footer {
+        flex-direction: column; /* 푸터 요소들을 세로로 쌓음 */
+        align-items: stretch; /* 좌우 꽉차게 */
+        gap: 20px;
+    }
+    .search-box {
+        width: 100%;
+    }
+    .search-box input[type="text"] {
+        flex-grow: 1; /* 남는 공간 다 차지 */
+    }
+    .pagination {
+        order: -1; /* 페이지네이션을 위로 보냄 */
+    }
+    .table-options {
+        text-align: center; /* 버튼 중앙 정렬 */
+    }
+    .notice-title h2 {
+        font-size: 2rem;
+    }
+}

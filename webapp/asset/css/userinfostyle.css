@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+/* 기본 배경 설정 */
+body {
+    background-color: #f8f9fa;
+}
+
+/* 회원정보 전체 컨테이너 */
+#main {
+    width: 100%;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+#main h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* 세로형 정보 테이블 스타일 */
+.vertical {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 2px solid #333; /* 테이블 상단에 강조 선 */
+}
+
+.vertical th, .vertical td {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.vertical th {
+    width: 150px; /* 라벨 너비 고정 */
+    background-color: #f8f9fa; /* 라벨 배경색 */
+    text-align: center;
+    font-weight: 500;
+    color: #333;
+}
+
+.vertical td {
+    text-align: left;
+    color: #555;
+}
+
+/* 하단 버튼 그룹 */
+#main > div:last-of-type {
+    display: flex;
+    justify-content: flex-end; /* 버튼을 오른쪽으로 정렬 */
+    gap: 10px;
+    margin-top: 30px;
+}
+
+/* 버튼 공통 스타일 */
+#main button {
+    min-width: 100px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+/* 주요 버튼 (수정하기, 회원탈퇴) */
+.primary {
+    background-color: #6C9A8B;
+    border-color: #6C9A8B;
+    color: white;
+}
+.primary:hover {
+    background-color: #5A887B;
+}
+
+/* 돌아가기 버튼 (보조 버튼) */
+.back {
+    background-color: #f8f9fa;
+    color: #333;
+}
+.back:hover {
+    background-color: #e2e6ea;
+}
+
+/* (참고) 회원탈퇴 버튼을 위한 위험/경고 스타일 */
+.danger {
+    background-color: #dc3545; /* 빨간색 계열 */
+    border-color: #dc3545;
+    color: white;
+}
+.danger:hover {
+    background-color: #c82333;
+}

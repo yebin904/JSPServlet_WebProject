@@ -1,0 +1,140 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+
+
+/* 기본 배경 설정 */
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+/* 아이디 찾기 전체 컨테이너 */
+#main {
+    width: 100%;
+    max-width: 500px; /* 폼이 간단하므로 너비 조정 */
+    margin: 20px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+#main h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* 폼 테이블 스타일 */
+#main table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+
+#main table th {
+    width: 80px;
+    padding-right: 20px;
+    text-align: right;
+    font-weight: 500;
+    color: #333;
+    vertical-align: top;
+    padding-top: 10px;
+}
+
+#main table td {
+    vertical-align: top;
+}
+
+/* 이메일 섹션 내부 레이아웃 */
+#main table td > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#main table td > div + div {
+    margin-top: 10px;
+}
+
+/* 입력창 공통 스타일 */
+#main input[type="text"],
+#main input[type="email"] {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#main input:focus {
+    outline: none;
+    border-color: #6C9A8B;
+    box-shadow: 0 0 0 2px rgba(108, 154, 139, 0.2);
+}
+
+/* 클래스별 너비 조정 */
+#main .short { width: 100%; max-width: 200px; }
+#main .long { width: 100%; }
+
+/* 인증 메일 관련 버튼 */
+#main #btnMail,
+#main #btnValid {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    color: #333;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap; /* 버튼 텍스트 줄바꿈 방지 */
+}
+#main input[type="button"][disabled] {
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+/* 하단 버튼 그룹 */
+#main form > div:last-of-type {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+#main .btn {
+    flex: 1; /* 버튼 너비를 동일하게 */
+    max-width: 200px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* 아이디 찾기 버튼 (주요 버튼) */
+#main #btnIdSearch {
+    background-color: #6C9A8B;
+    border-color: #6C9A8B;
+    color: white;
+}
+#main #btnIdSearch:hover {
+    background-color: #5A887B;
+}
+
+/* 돌아가기 버튼 (보조 버튼) */
+#main button[onclick] {
+    background-color: #f8f9fa;
+    color: #333;
+}
+#main button[onclick]:hover {
+    background-color: #e2e6ea;
+}

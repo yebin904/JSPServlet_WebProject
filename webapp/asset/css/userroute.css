@@ -1,0 +1,61 @@
+@charset "UTF-8";
+/* 전체 컨테이너 여백 */
+#main {
+    padding: 20px;
+}
+
+/* 각 여행 루트 아이템 카드 */
+.route-item {
+    border: 1px solid #aaa; /* 테두리 색상 */
+    border-radius: 15px;      /* 둥근 모서리 */
+    padding: 20px 25px;       /* 내부 여백 (상하 20px, 좌우 25px) */
+    margin-bottom: 20px;      /* 카드 사이의 간격 */
+    background-color: #fff;   /* 배경색 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* 은은한 그림자 효과 */
+    cursor: pointer;          /* 마우스 커서 올리면 손가락 모양으로 */
+    transition: all 0.2s ease-in-out; /* 부드러운 전환 효과 */
+}
+
+/* 마우스를 올렸을 때 효과 */
+.route-item:hover {
+    transform: translateY(-5px); /* 살짝 위로 이동 */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* 그림자 진하게 */
+}
+
+/* 루트 제목 스타일 */
+.route-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px; /* 제목과 아래 내용 사이 간격 */
+}
+
+/* 여행 세부 정보 (날짜, 인원 등) */
+.route-details {
+    font-size: 14px;
+    color: #555; /* 글자색 */
+    display: flex; /* 가로 정렬을 위해 flex 사용 */
+    justify-content: space-between; /* 요소들 사이에 동일한 간격 분배 */
+    flex-wrap: wrap; /* 화면이 작아지면 줄바꿈 */
+}
+
+/* 더보기 버튼을 감싸는 컨테이너 */
+.load-more-container {
+    text-align: center;
+    padding: 20px;
+}
+
+/* 더보기 버튼 스타일 */
+#loadMoreBtn {
+    background-color: #000;  /* 배경색: 검정 */
+    color: #fff;             /* 글자색: 흰색 */
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+#loadMoreBtn:hover {
+    background-color: #444; /* 마우스 올리면 약간 밝은 검정으로 */
+}

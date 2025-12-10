@@ -1,0 +1,484 @@
+
+ 
+
+ 
+ /* =========================================================
+ 🌿 THEME REFINED - Minimal & Refreshing Travel Vibe
+ 여행 + 곰 + 청량 + 미니멀 (화이트 카드 레이아웃)
+ ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+:root {
+    /* 🎨 COLORS - 청량감을 더하는 색상으로 조정 */
+    --primary: #6C9A8B; /* Misty Moss */
+    --primary-dark: #517D6F;
+    --accent: #FF8C69; /* Accent color for points (e.g., Coral) */
+    --bg: #F8F9FA;      /* 전체 배경을 연한 회색으로 변경 */
+    --surface: #FFFFFF; /* 카드 배경은 흰색 유지 */
+    --border: #E9ECEF;  /* 테두리 색상 연하게 */
+    --text: #212529;    /* 기본 텍스트 색상 진하게 */
+    --text-light: #6C757D; /* 보조 텍스트 색상 */
+    --shadow-soft: 0 8px 30px rgba(0,0,0,0.06); /* 그림자 효과 부드럽게 */
+    --radius: 20px; /* 둥근 모서리 반경 증가 */
+}
+
+/* === 전체 레이아웃 === */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: var(--bg); /* 연한 배경색 적용 */
+    color: var(--text);
+    margin: 0;
+    padding-top: 70px; /* 고정 헤더 높이만큼 패딩 추가 */
+    line-height: 1.7;
+    letter-spacing: -0.5px; /* 자간 조절로 가독성 향상 */
+}
+
+/* ========================================================= */
+/* HEADER STYLES START                                       */
+/* ========================================================= */
+
+/* === HEADER 기본 구조 === */
+#main-header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: saturate(180%) blur(5px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* === HEADER 완벽한 중앙 정렬을 위한 좌/우 영역 === */
+.header-column {
+    flex: 1; /* 좌/우 영역이 동일한 너비를 차지하여 중앙 메뉴를 완벽하게 가운데로 정렬 */
+}
+
+/* === 로고 === */
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.logo a {
+    color: var(--primary-dark);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.logo a:hover {
+    color: var(--primary);
+}
+
+/* === 중앙 내비게이션 메뉴 === */
+.nav-menu {
+    display: flex;
+    justify-content: center; /* 메뉴 아이템들을 중앙 정렬 */
+    gap: 32px;
+}
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 500;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+    white-space: nowrap; /* 메뉴 이름이 줄바꿈되지 않도록 */
+}
+.nav-menu a:hover {
+    color: var(--primary);
+}
+.nav-menu a.active {
+    color: var(--primary);
+    font-weight: 700;
+    border-bottom-color: var(--primary);
+}
+
+/* === 드롭다운 메뉴 === */
+.nav-item.has-dropdown {
+    position: relative; /* 자식인 .sub-menu의 위치 기준이 됨 */
+}
+.nav-item .sub-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    padding: 10px;
+    width: max-content;
+    display: flex;
+    gap: 5px;
+    z-index: 1001;
+    border: 1px solid var(--border);
+}
+.nav-item.has-dropdown:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) translateX(-50%);
+}
+.nav-item .sub-menu a {
+    color: var(--text-light);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+    border-bottom: none; /* 드롭다운 메뉴 아이템에는 밑줄 효과 제거 */
+}
+.nav-item .sub-menu a:hover {
+    background-color: #F8F9FA;
+    color: var(--primary);
+}
+
+/* === HEADER 오른쪽 영역 === */
+.header-right {
+    display: flex;
+    justify-content: flex-end; /* 내용물을 오른쪽 끝으로 정렬 */
+    align-items: center;
+    gap: 20px;
+}
+.search-bar input {
+    border: 1px solid var(--border);
+    outline: none;
+    background: #F8F9FA;
+    padding: 8px 15px;
+    border-radius: 30px;
+    width: 180px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+.search-bar input:focus {
+    background: var(--surface);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(108, 154, 139, 0.1);
+}
+
+/* === 로그인/사용자 정보 === */
+.btn-login {
+    padding: 8px 20px;
+    border: 1px solid var(--primary);
+    background-color: transparent;
+    color: var(--primary);
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.btn-login:hover {
+    background-color: var(--primary);
+    color: white;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.95rem;
+}
+.user-info strong {
+    color: var(--primary-dark);
+}
+.btn-logout {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 5px 8px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+.btn-logout:hover {
+    background-color: #f1f3f5;
+    color: var(--text);
+}
+
+/* ========================================================= */
+/* HEADER STYLES END                                         */
+/* ========================================================= */
+
+
+/* === 메인 콘텐츠 === */
+main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 30px;
+}
+.borad-title h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 50px;
+}
+
+/* === 게시판 테이블 -> 카드 리스트 형태로 변경 === */
+	.borad-table {
+	    width: 100%;
+	    border-collapse: collapse;
+	    font-size: 1rem;
+	    border: none;
+	    background-color: var(--surface);
+	    border-radius: var(--radius);
+	    box-shadow: var(--shadow-soft);
+	    overflow: hidden;
+	}
+.borad-table thead {
+    border-bottom: 1px solid var(--border);
+}
+.borad-table th {
+    padding: 16px 20px;
+    background: #F8F9FA;
+    font-weight: 600;
+    color: var(--text-light);
+    text-align: center;
+}
+.borad-table th:first-child, .notice-table td:first-child {
+    padding-left: 30px;
+}
+.borad-table th:last-child, .notice-table td:last-child {
+    padding-right: 30px;
+}
+.borad-table .title {
+    text-align: left;
+    font-weight: 600;
+}
+.borad-table .title a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.25s;
+}
+.borad-table .title a:hover {
+    color: var(--primary);
+}
+.borad-table tbody tr {
+    transition: background-color 0.3s;
+}
+.borad-table tbody tr:hover {
+    background-color: #F8F9FA;
+}
+.borad-table td {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+.borad-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.isnew {
+    display: inline-block;
+    background-color: var(--accent);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 7px;
+    border-radius: 10px;
+    margin-left: 8px;
+    font-weight: 700;
+    vertical-align: middle;
+}
+
+/* === 하단 기능 (검색, 페이지네이션, 버튼) === */
+.notice-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+/* 검색 (하단) */
+.search-box {
+    display: flex;
+    gap: 8px;
+}
+.search-box input[type="text"] {
+    width: 250px;
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    background: var(--surface);
+    transition: all 0.3s;
+}
+.search-box input[type="text"]:focus {
+    outline: none;
+    background: var(--surface);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(108, 154, 139, 0.1);
+}
+.search-box button {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--primary);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+.search-box button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* 페이지네이션 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+.pagination a, .pagination strong {
+    display: inline-block;
+    min-width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    color: var(--text-light);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.pagination a:hover {
+    background-color: #E9ECEF;
+    color: var(--text);
+}
+.pagination .active, .pagination strong {
+    background-color: var(--primary);
+    color: #fff;
+    cursor: default;
+}
+
+/* 글쓰기 버튼 영역 */
+.table-options {
+    text-align: right;
+}
+
+/* === 버튼 공통 스타일 === */
+.btn {
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108,154,139,0.2);
+}
+ 
+ 
+
+.header-right .login-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 버튼 사이 간격 */
+}
+.header-right .btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+}
+.header-right .btn-login {
+    background-color: #f0f0f0;
+    color: #333;
+}
+.header-right .btn-register {
+    background-color: #007bff;
+    color: white;
+}
+
+/* 프로필 아이콘 스타일 (로그인 후) */
+.profile-container a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* 원형으로 만들기 */
+    overflow: hidden; /* 이미지가 원 밖으로 나가지 않도록 */
+    cursor: pointer;
+}
+.profile-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율을 유지하며 꽉 채움 */
+}
+
+
+
+/* ======================================================
+   7. 게시판 서브 헤더 (Board Sub-header)
+   ====================================================== */
+
+.board-sub-header {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e9e9e9;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.sub-header-inner {
+    max-width: 1200px; /* 메인 헤더의 너비와 맞추세요 */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* 메뉴를 중앙에 배치 */
+    align-items: center;
+    gap: 20px; /* 메뉴 아이템 사이의 간격 */
+}
+
+.sub-header-inner a {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+    position: relative;
+}
+
+/* 메뉴에 마우스를 올렸을 때 */
+.sub-header-inner a:hover {
+    background-color: #f5f5f5;
+    color: #111;
+}
+
+/* ★ 현재 활성화된 메뉴 스타일 */
+.sub-header-inner a.active {
+    color: #007bff; /* 활성 메뉴 텍스트 색상 */
+    font-weight: 700; /* 굵게 */
+}
+
+/* 활성 메뉴 아래에 라인 추가 (선택) */
+.sub-header-inner a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    height: 3px;
+    background-color: #007bff;
+    border-radius: 2px;
+}
+
+
+
+
+
+
+

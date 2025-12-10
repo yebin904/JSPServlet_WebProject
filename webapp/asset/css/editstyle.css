@@ -1,0 +1,114 @@
+@charset "UTF-8";
+/* 기본 배경 설정 */
+body {
+    background-color: #f8f9fa;
+}
+
+/* 수정 페이지 전체 컨테이너 */
+#main {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+#main h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+#main h1 small {
+    font-size: 1rem;
+    color: #888;
+}
+
+/* 폼 테이블 스타일 */
+#main table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+
+#main table th {
+    width: 120px;
+    padding-right: 20px;
+    text-align: right;
+    font-weight: 500;
+    color: #333;
+    vertical-align: top;
+    padding-top: 10px;
+}
+
+#main table td {
+    vertical-align: top;
+}
+
+/* 입력창 & 텍스트에어리어 공통 스타일 */
+#main input[type="text"],
+#main textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+}
+
+#main input:focus,
+#main textarea:focus {
+    outline: none;
+    border-color: #6C9A8B;
+    box-shadow: 0 0 0 2px rgba(108, 154, 139, 0.2);
+}
+
+#main textarea {
+    min-height: 250px; /* 내용 입력창 높이를 넉넉하게 */
+    resize: vertical;
+}
+
+/* 하단 버튼 그룹 */
+#main form > div:last-of-type {
+    display: flex;
+    justify-content: flex-end; /* 버튼을 오른쪽으로 정렬 */
+    gap: 10px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+#main button {
+    min-width: 100px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* 수정하기 버튼 (주요 버튼) */
+#main .edit.primary {
+    background-color: #6C9A8B;
+    border-color: #6C9A8B;
+    color: white;
+}
+#main .edit.primary:hover {
+    background-color: #5A887B;
+}
+
+/* 돌아가기 버튼 (보조 버튼) */
+#main .back {
+    background-color: #f8f9fa;
+    color: #333;
+}
+#main .back:hover {
+    background-color: #e2e6ea;
+}

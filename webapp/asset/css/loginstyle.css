@@ -1,0 +1,121 @@
+@charset "UTF-8";
+/* 기본 배경 설정 */
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* 헤더를 제외한 영역을 채우기 위해 */
+}
+
+/* 로그인 전체 컨테이너 */
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 20px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.login-container h1 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.login-container h1 small {
+    font-size: 1rem;
+    color: #888;
+}
+
+/* 폼 그룹 (라벨 + 입력창) */
+.form-group {
+    margin-top: 25px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* 입력창 스타일 */
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #6C9A8B;
+    box-shadow: 0 0 0 2px rgba(108, 154, 139, 0.2);
+}
+
+/* 버튼 그룹 */
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.button-group button {
+    flex: 1; /* 버튼이 동일한 너비를 갖도록 설정 */
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* 로그인 버튼 (주요 버튼) */
+.button-group .primary {
+    background-color: #6C9A8B;
+    border-color: #6C9A8B;
+    color: white;
+}
+.button-group .primary:hover {
+    background-color: #5A887B;
+}
+
+/* 돌아가기 버튼 (보조 버튼) */
+.button-group .back {
+    background-color: #f8f9fa;
+    color: #333;
+}
+.button-group .back:hover {
+    background-color: #e2e6ea;
+}
+
+
+/* 아이디/비밀번호 찾기 링크 */
+.find-links {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.find-links button {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    padding: 0;
+    font-size: 0.9rem;
+}
+.find-links button:hover {
+    text-decoration: underline;
+}

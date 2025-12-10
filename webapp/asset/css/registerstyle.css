@@ -1,0 +1,151 @@
+@charset "UTF-8";
+/* 기본 배경 설정 */
+body {
+    background-color: #f8f9fa;
+}
+
+/* 회원가입 전체 컨테이너 */
+#main {
+    width: 100%;
+    max-width: 700px; /* 로그인폼보다 넓게 설정 */
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+#main h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+#main h1 small {
+    font-size: 1rem;
+    color: #888;
+}
+
+/* 폼 테이블 스타일 */
+#main table {
+    width: 100%;
+    border-collapse: separate; /* 셀 간의 간격을 주기 위해 separate 사용 */
+    border-spacing: 0 20px; /* 세로 간격만 20px 줌 */
+}
+
+#main table th {
+    width: 130px; /* 라벨 너비 고정 */
+    padding-right: 20px;
+    text-align: right;
+    font-weight: 500;
+    color: #333;
+    vertical-align: top; /* 내용이 여러 줄일 경우 위쪽 정렬 */
+    padding-top: 10px; /* input과 세로 중앙 정렬을 위한 미세 조정 */
+}
+
+#main table td {
+    vertical-align: top; /* 내용이 여러 줄일 경우 위쪽 정렬 */
+}
+
+/* 모든 입력창 공통 스타일 */
+#main input[type="text"],
+#main input[type="password"],
+#main input[type="email"],
+#main input[type="number"] {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#main input:focus {
+    outline: none;
+    border-color: #6C9A8B;
+    box-shadow: 0 0 0 2px rgba(108, 154, 139, 0.2);
+}
+
+/* 클래스별 너비 조정 */
+#main .short { width: 200px; }
+#main .long { width: 100%; }
+
+/* 이메일, 주소 등 복잡한 항목 내부 레이아웃 */
+#main table td > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#main table td > div + div {
+    margin-top: 10px;
+}
+
+/* 이메일/주소 검색 버튼 스타일 */
+#main #btnMail,
+#main #btnValid,
+#main #btn-address-search {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    color: #333;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap; /* 버튼 텍스트가 줄바꿈되지 않도록 */
+}
+#main input[type="button"][disabled] {
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+/* 성별 라디오 버튼 */
+#main input[type="radio"] {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+#main table td label {
+    vertical-align: middle;
+    padding-top: 10px;
+    display: inline-block;
+}
+
+/* 하단 버튼 그룹 */
+#main form > div:last-of-type {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#main .btn {
+    min-width: 120px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* 가입하기 버튼 (주요 버튼) */
+#main button[type="submit"] {
+    background-color: #6C9A8B;
+    border-color: #6C9A8B;
+    color: white;
+}
+#main button[type="submit"]:hover {
+    background-color: #5A887B;
+}
+
+/* 돌아가기 버튼 (보조 버튼) */
+#main button[onclick] {
+    background-color: #f8f9fa;
+    color: #333;
+}
+#main button[onclick]:hover {
+    background-color: #e2e6ea;
+}

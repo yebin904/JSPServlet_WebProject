@@ -1,0 +1,118 @@
+/* 기본 배경 설정 */
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+/* 회원 탈퇴 전체 컨테이너 */
+#main {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+#main h1 {
+    text-align: center;
+    margin-bottom: 40px; /* 타이틀 아래 간격 추가 */
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+#main h1 small {
+    font-size: 1rem;
+    color: #888;
+}
+
+/* 폼 내부 요소 정렬 */
+#main form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* 각 항목 사이의 세로 간격 */
+}
+
+/* 라벨 + 입력창을 감싸는 div 스타일 */
+#main form > div {
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+}
+
+#main form label {
+    width: 100px; /* 라벨 너비 고정 */
+    text-align: left;
+    font-weight: 500;
+    color: #333;
+    flex-shrink: 0; /* 라벨 너비가 줄어들지 않도록 */
+}
+
+/* 입력창 & 텍스트에어리어 공통 스타일 */
+#main input[type="password"],
+#main textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+}
+
+#main textarea {
+    min-height: 100px; /* 탈퇴 사유 입력창 높이 */
+    resize: vertical;
+}
+
+#main input:focus,
+#main textarea:focus {
+    outline: none;
+    border-color: #6C9A8B;
+    box-shadow: 0 0 0 2px rgba(108, 154, 139, 0.2);
+}
+
+/* 하단 버튼 그룹 */
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 30px;
+    border-top: 1px solid #f0f0f0;
+}
+
+#main button {
+    flex: none;
+    max-width: 200px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+/* 삭제하기 버튼 (경고 스타일) */
+#main .del.primary {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+#main .del.primary:hover {
+    background-color: #c82333;
+}
+
+/* 돌아가기 버튼 (보조 버튼) */
+#main .back {
+    background-color: #f8f9fa;
+    color: #333;
+}
+#main .back:hover {
+    background-color: #e2e6ea;
+}

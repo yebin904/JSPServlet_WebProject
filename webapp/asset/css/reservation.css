@@ -1,0 +1,962 @@
+@charset "UTF-8";
+/* =========================================================
+🌿 RESERVATION THEME (QnA 톤앤무드 통일)
+- 실제 JSP 클래스: sidebar, filter-section, filter-options, reset-btn,
+  content, room-list, room-card, room-info, room-status(available/unavailable),
+  reserve-btn, container, section, detail, summary, btn, info-box, btn-box,
+  car-card, car-info, skip-btn, status
+========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+:root{
+  --primary:#6C9A8B;
+  --primary-dark:#517D6F;
+  --accent:#FF8C69;
+  --bg:#F8F9FA;
+  --surface:#FFFFFF;
+  --border:#E9ECEF;
+  --text:#212529;
+  --text-light:#6C757D;
+  --shadow:0 8px 30px rgba(0,0,0,.06);
+  --radius:20px;
+}
+
+html,body{
+  font-family:'Noto Sans KR',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  letter-spacing:-.3px;
+  margin:0;
+}
+
+/* ===========================
+   공통 컨테이너 / 타이틀 / 버튼
+=========================== */
+.container{
+  max-width:1000px;
+  margin:60px auto;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:40px 44px;
+}
+.container > h2{
+  text-align:center;
+  font-size:1.9rem;
+  font-weight:800;
+  color:var(--primary-dark);
+  margin:0 0 28px;
+}
+
+.btn{
+  display:inline-block;
+  padding:12px 22px;
+  border:none;
+  border-radius:28px;
+  background:var(--primary);
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s;
+  text-decoration:none;
+}
+.btn:hover{ background:var(--primary-dark); }
+.btn.btn-secondary{
+  background:var(--accent);
+}
+.btn.btn-secondary:hover{
+  background:#ff744a;
+}
+
+/* ===========================
+   좌측 필터(숙소/차량 공통)
+=========================== */
+.sidebar{
+  position:sticky;
+  top:20px;
+  align-self:flex-start;
+  width:260px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  padding:18px 18px 22px;
+  margin:40px 20px;
+  float:left; /* 페이지 구조가 단순해서 float 사용 */
+}
+.filter-section{ margin-bottom:16px; }
+.filter-section h4{
+  margin:0 0 10px;
+  font-size:1rem;
+  color:var(--primary-dark);
+}
+.filter-options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 12px;
+  font-size:.95rem;
+}
+.reset-btn{
+  display:inline-block;
+  margin-top:8px;
+  padding:8px 14px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:#F1F3F5;
+  color:#333;
+  cursor:pointer;
+  transition:.15s;
+}
+.reset-btn:hover{ background:#e9ecef; }
+
+/* ===========================
+   숙소 리스트 (accomList.jsp)
+=========================== */
+.content{ /* 우측 목록 영역 */
+  margin:40px 20px 60px 320px; /* sidebar 폭 고려 */
+}
+.content > h2{
+  margin:0 0 16px;
+  color:#000;
+  font-size:1.6rem;
+  font-weight:800;
+}
+.room-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:18px;
+}
+.room-card{
+  display:flex;
+  gap:16px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  padding:16px;
+  transition:.2s;
+}
+.room-card:hover{ transform:translateY(-4px); }
+.room-info h3{
+  margin:0 0 4px;
+  font-size:1.1rem;
+  color:var(--primary);
+  font-weight:800;
+}
+.room-info p{
+  margin:4px 0;
+  font-size:.95rem;
+  color:var(--text-light);
+}
+.room-info .price{ color:var(--accent); font-weight:800; }
+.room-status{
+  display:inline-block;
+  padding:2px 8px;
+  border-radius:999px;
+  font-size:.82rem;
+  font-weight:700;
+  border:1px solid var(--border);
+}
+.room-status.available{
+  background:#e6f0ed;
+  border-color:var(--primary);
+  color:var(--primary-dark);
+}
+.room-status.unavailable{
+  background:#ffe9e3;
+  border-color:#ffb39c;
+  color:#e8590c;
+}
+.reserve-btn{
+  margin-top:10px;
+  padding:10px 16px;
+  border-radius:12px;
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s;
+}
+.reserve-btn:hover{ background:var(--primary-dark); }
+
+
+/* ===========================
+   차량 리스트 (carList.jsp)
+=========================== */
+.car-list-container {
+  max-width: 1080px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+
+
+/* === 이미지 박스 (비율 유지 + 균일한 여백) === */
+.car-thumb {
+  width: 260px;
+  height: 180px;
+  flex-shrink: 0;
+}
+
+.car-thumb img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.car-thumb img:hover {
+  transform: scale(1.05);
+}
+
+/* === 차량 정보 === */
+.car-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.car-info h3 {
+  font-size: 1.25rem;
+  color: var(--primary);
+  font-weight: 800;
+  margin: 0;
+}
+.car-info p {
+  color: var(--text-light);
+  margin: 0;
+  font-size: 0.95rem;
+}
+.car-info .price {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-top: 6px;
+}
+
+/* === 버튼 영역 === */
+.car-actions {
+  flex-shrink: 0;
+}
+.car-actions .reserve-btn {
+  width: 110px;
+  height: 42px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.car-actions .reserve-btn:hover {
+  background: var(--primary-dark);
+}
+
+/* ===========================
+   차량 선택 안 함 버튼
+=========================== */
+.no-car-btn {
+  display: block;
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 14px 0;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  margin-top: 24px; /* ✅ 여백 확보 */
+  box-shadow: 0 4px 10px rgba(255,140,105,0.35);
+}
+
+.no-car-btn:hover {
+  background: #ff744a;
+  box-shadow: 0 6px 16px rgba(255,115,90,0.45);
+}
+
+/* ===========================
+   반응형
+=========================== */
+@media (max-width: 900px) {
+  .car-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    min-height: auto;
+  }
+  .car-thumb {
+    width: 100%;
+    height: 200px;
+  }
+  .car-actions {
+    justify-content: center;
+  }
+  .car-actions .reserve-btn {
+    width: 100%;
+  }
+}
+
+
+
+/* ===========================
+   반응형 (모바일)
+=========================== */
+@media (max-width: 768px) {
+  .car-card {
+    grid-template-columns: 1fr;
+    row-gap: 14px;
+    text-align: center;
+  }
+
+  .car-thumb {
+    width: 100%;
+    height: 200px;
+  }
+
+  .car-actions .reserve-btn {
+    width: 100%;
+  }
+}
+
+
+/* ===========================
+   예약 확인 (confirm.jsp)
+=========================== */
+.section{ margin:22px 0; }
+.section > h3{
+  margin:0 0 10px;
+  color:var(--primary-dark);
+  font-size:1.1rem;
+}
+.detail{
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:#fff;
+  padding:14px 16px;
+  box-shadow:var(--shadow);
+}
+.summary{
+  margin-top:24px;
+  border-top:1px dashed var(--border);
+  padding-top:16px;
+}
+#totalPrice{
+  font-size:1.2rem;
+  font-weight:800;
+  color:var(--primary);
+}
+
+/* ===========================
+   예약 목록 (list.jsp)
+=========================== */
+.container table{
+  width:100%;
+  border-collapse:collapse;
+  border-top:2px solid var(--primary);
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+}
+.container table thead{ background:var(--primary); color:#fff; }
+.container table th{
+  padding:12px 8px;
+  font-weight:700;
+  text-align:center;
+}
+.container table td{
+  padding:12px 8px;
+  border-bottom:1px solid var(--border);
+  text-align:center;
+  font-size:.95rem;
+}
+.container .empty{
+  text-align:center;
+  color:var(--text-light);
+  padding:24px 0;
+}
+.status{ /* 상태 뱃지 공통 */
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:999px;
+  background:#f1f3f5;
+  font-weight:700;
+  font-size:.85rem;
+}
+
+/* ===========================
+   예약 상세 (view.jsp)
+=========================== */
+.section + .btn{ margin-top:8px; }
+
+/* ===========================
+   예약 완료 (success.jsp)
+=========================== */
+.info-box{
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  background:#fff;
+  padding:20px 18px;
+  margin:18px 0 28px;
+}
+.info-box p{ margin:8px 0; }
+.btn-box{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+}
+
+/* ===========================
+   반응형
+=========================== */
+@media (max-width: 900px){
+  .sidebar{ position:relative; float:none; width:auto; margin:20px; }
+  .content{ margin:10px 20px; }
+  .container{ margin:30px 16px; padding:24px; }
+  .room-list{ grid-template-columns:1fr; }
+}
+
+/* ===========================
+   타이틀 영역 (숙소/차량 선택)
+=========================== */
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-left: 6px solid var(--primary);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 18px 24px;
+  margin: 30px 20px 25px;
+}
+.page-title h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+.page-title span {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ===========================
+   차량 선택 페이지 개선
+=========================== */
+
+/* ✅ 메인 content 간격 조정 */
+.content {
+  margin: 40px 40px 60px 320px; /* 사이드바와 여백 확보 */
+}
+
+/* ✅ 타이틀 아래 여백 줄이기 */
+.page-title {
+  margin: 20px 20px 10px; /* 상단 간격 축소 */
+}
+
+/* ✅ 차량이 없을 때 메시지 스타일 */
+.no-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 300px;
+  background: var(--surface);
+  border: 2px dashed var(--border);
+  border-radius: 16px;
+  color: var(--text-light);
+  font-size: 1.05rem;
+  box-shadow: var(--shadow);
+}
+
+
+/* ===========================
+   차량 선택 페이지 전체 레이아웃 개선
+=========================== */
+
+/* ✅ content 영역 - 사이드바와의 간격 확보 */
+.content {
+  margin: 40px 40px 80px 370px; /* 왼쪽 320 = sidebar + 60px 여유 */
+  max-width: 1100px;
+  box-sizing: border-box;
+}
+
+/* ✅ 타이틀 영역 - content 폭에 맞게 확장 */
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-left: 6px solid var(--primary);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 18px 24px;
+  margin: 10px 0 25px;
+  width: 100%; /* content 영역과 폭 맞춤 */
+  box-sizing: border-box;
+}
+.page-title h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+.page-title span {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ✅ 차량 카드 전체 폭 content에 맞춤 */
+.car-card {
+  display: grid;
+  grid-template-columns: 300px 1fr 120px;
+  align-items: center;
+  gap: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 24px 28px;
+  margin-bottom: 26px;
+  transition: 0.25s ease;
+  min-height: 230px;
+}
+
+.car-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+}
+
+/* ✅ 차량 이미지 크기와 정렬 */
+.car-thumb {
+  width: 280px;
+  height: 180px;
+  flex-shrink: 0;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.car-thumb img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.car-thumb img:hover { transform: scale(1.05); }
+
+/* ✅ 차량 정보 */
+.car-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+.car-info h3 {
+  font-size: 1.25rem;
+  color: var(--primary);
+  font-weight: 800;
+  margin: 0;
+}
+.car-info p {
+  color: var(--text-light);
+  margin: 0;
+  font-size: 0.95rem;
+}
+.car-info .price {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-top: 6px;
+}
+
+/* ✅ 버튼 영역 고정 폭 */
+.car-actions {
+  flex-shrink: 0;
+}
+.car-actions .reserve-btn {
+  width: 110px;
+  height: 42px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.car-actions .reserve-btn:hover {
+  background: var(--primary-dark);
+}
+
+/* ✅ 차량 없음 메시지 - 폭 맞춰서 정렬 */
+.no-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 260px;
+  background: var(--surface);
+  border: 2px dashed var(--border);
+  border-radius: 16px;
+  color: var(--text-light);
+  font-size: 1.05rem;
+  box-shadow: var(--shadow);
+  width: 100%;
+  box-sizing: border-box;
+}
+.no-result::before {
+  content: "🥺";
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+/* ✅ 반응형 수정 */
+@media (max-width: 900px) {
+  .content { margin: 20px; }
+  .page-title { margin: 10px 0 20px; }
+  .car-card { flex-direction: column; text-align: center; }
+  .car-thumb { width: 100%; height: 200px; }
+}
+
+/* 숙소 페이지 전용 */
+.accom-container {
+  display: flex;
+  gap: 40px;
+  margin: 40px auto 80px;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+/* 좌측 필터 */
+.accom-sidebar {
+  flex: 0 0 260px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+}
+
+.accom-filter h4 {
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+}
+.accom-filter + .accom-filter { margin-top: 18px; }
+
+/* 숙소 카드 목록 */
+.accom-content {
+  flex: 1;
+  margin-top: 25px; /* 타이틀과 카드 사이 여백 */
+  padding: 10px 30px 50px; /* 양쪽 + 아래 여유 */
+  box-sizing: border-box;
+}
+
+/* 개별 숙소 카드 */
+.accom-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  padding: 18px;
+  transition: 0.25s ease;
+  overflow: visible;
+}
+
+.accom-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 26px rgba(0,0,0,0.1);
+}
+
+
+/* 숙소 썸네일 */
+.accom-thumb {
+  width: 100%;
+  height: 200px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.accom-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+.accom-card:hover .accom-thumb img {
+  transform: scale(1.05);
+}
+
+/* 숙소 정보 */
+.accom-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 3px;
+  flex: 1;
+}
+
+.accom-info h3 {
+  font-size: 1.08rem;
+  color: var(--primary-dark);
+  font-weight: 800;
+  margin: 0;
+  word-break: keep-all;
+}
+
+.accom-info p {
+  margin: 2px 0;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+.accom-info .price {
+  margin-top: 4px;
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+/* 예약 상태 뱃지 */
+.accom-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.accom-status.available {
+  background: #e6f4ea;
+  color: var(--primary-dark);
+}
+.accom-status.unavailable {
+  background: #ffecec;
+  color: #e8590c;
+}
+
+/* 예약 버튼 */
+.accom-btn {
+  align-self: flex-start;
+  margin-top: 10px;
+  padding: 9px 18px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .2s ease;
+}
+.accom-btn:hover {
+  background: var(--primary-dark);
+}
+
+/* 숙소 카드 그리드 */
+.room-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 40px 40px; /* ✅ 카드 간 여백 확실히 벌림 */
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+.car-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 40px auto 80px; /* ✅ 전체 중앙정렬 */
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* 왼쪽 필터 */
+.car-sidebar {
+  width: 260px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 18px 18px 22px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+}
+
+/* 오른쪽 목록 */
+.car-content {
+  flex: 1;
+  max-width: 1000px;
+  margin-top: 10px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+/* 제목 정렬도 중앙 */
+.car-content .page-title {
+  margin-bottom: 20px;
+}
+
+/* ================================
+   📸 예약 확정 페이지 이미지 통일
+================================ */
+.confirm-image-box {
+  width: 100%;
+  max-width: 800px;      /* ✅ 최대 가로폭 제한 (너무 커지지 않게) */
+  aspect-ratio: 16 / 9;  /* ✅ 일정한 비율로 유지 (16:9 추천) */
+  overflow: hidden;
+  border-radius: 16px;
+  margin: 20px 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.confirm-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* ✅ 비율 유지하며 꽉 채우기 */
+  display: block;
+}
+
+.confirm-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.confirm-image-box:hover img {
+  transform: scale(1.03);
+}
+
+/* ================================
+   🌿 예약 확정 페이지 전체 정렬 및 디자인 개선
+================================ */
+.confirm-container {
+  max-width: 900px; /* ✅ 이미지 폭과 맞춤 */
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* 제목 */
+.confirm-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #2e3d38;
+  margin-bottom: 30px;
+  border-bottom: 3px solid #517D6F;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+/* 숙소/차량 섹션 */
+.confirm-section {
+  background: #fafafa;
+  border: 1px solid #e9ecef;
+  border-radius: 16px;
+  padding: 25px 30px;
+  margin-bottom: 40px;
+}
+
+.confirm-section h3 {
+  color: #517D6F;
+  font-size: 20px;
+  margin-bottom: 16px;
+  border-left: 6px solid #FF8C69; /* 🍊 강조 라인 */
+  padding-left: 10px;
+}
+
+.confirm-info p {
+  font-size: 16px;
+  margin: 8px 0;
+  color: #444;
+}
+
+/* 이미지 통일 */
+.confirm-image-box {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  margin: 20px 0 30px;
+}
+
+.confirm-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.confirm-image-box:hover img {
+  transform: scale(1.03);
+}
+
+/* 이용 일정 */
+.schedule-box {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 14px;
+  padding: 20px 25px;
+  margin-top: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+.schedule-box p {
+  font-size: 15px;
+  margin: 8px 0;
+}
+
+/* 총 금액 강조 */
+.total-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #517D6F;
+  margin: 25px 0 15px;
+}
+
+.total-price span {
+  color: #FF8C69; /* 🍊 금액 강조 */
+}
+
+/* 버튼 */
+.confirm-btn {
+  background-color: #517D6F;
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  font-size: 17px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.confirm-btn:hover {
+  background-color: #FF8C69; /* 🍊 hover 시 색 변경 */
+  transform: translateY(-2px);
+}
+
+
+

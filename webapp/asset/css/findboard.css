@@ -1,0 +1,231 @@
+/* =========================================================
+   [수정] 동행 찾기 게시판 상세 보기(view) 전용 확장 스타일
+ ========================================================= */
+
+/* === 게시글 상세 보기 헤더 (제목, 작성자 정보) === */
+.post-header {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 30px;
+}
+.post-header h1 {
+    font-size: 2.2rem;
+    margin: 0 0 15px 0;
+    font-weight: 700;
+    color: var(--text);
+}
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+.post-meta strong {
+    color: var(--primary-dark);
+}
+
+/* === 게시글 본문 === */
+.post-content {
+    padding: 20px 0;
+    min-height: 300px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #343a40;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* === 추천/스크랩 버튼 === */
+.post-actions {
+    text-align: center;
+    margin: 40px 0;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+}
+.btn-like {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    padding: 15px 30px;
+    border: 2px solid var(--border);
+    border-radius: 50px;
+    background-color: var(--surface);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-light);
+}
+.btn-like:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(108,154,139,0.2);
+}
+.btn-like .icon { margin-right: 8px; font-size: 1.3rem; }
+.btn-like .count { margin-left: 10px; }
+.btn-like.liked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+.btn-like.btn-scrap {
+    margin-left: 10px;
+}
+.btn-like.btn-scrap.scrapped {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+/* === 댓글 섹션 === */
+.comment-container {
+    margin-top: 60px;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    padding: 30px;
+}
+.comment-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-dark);
+    color: var(--primary-dark);
+}
+.comment-list {
+    margin-bottom: 30px;
+}
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 25px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 15px;
+}
+.comment-item:last-child { border-bottom: none; }
+
+
+.comment-profile-icon {
+    display: none;
+}
+.comment-body {
+    flex-grow: 1;
+}
+.comment-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+.comment-author strong {
+    font-size: 1.1rem;
+    color: var(--text);
+    font-weight: 700;
+}
+.comment-author span {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+.comment-content {
+    line-height: 1.7;
+    color: #495057;
+    padding-bottom: 15px; /* 수정/삭제 링크와 간격 확보 */
+}
+
+/* ▼▼▼ [핵심 수정 2] 수정/삭제 링크 스타일 변경 ▼▼▼ */
+.comment-actions {
+    text-align: right;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+.comment-actions a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin-left: 15px; /* 링크 사이 간격 넓히기 */
+}
+.comment-actions a:hover {
+    text-decoration: underline;
+    color: var(--primary);
+}
+
+/* === 댓글 작성 및 수정 폼 === */
+.comment-write {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: #F8F9FA;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+.comment-write textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    resize: vertical;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+    min-height: 100px; /* 기본 입력창 높이 */
+}
+.comment-write textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(108,154,139,0.1);
+}
+.comment-write div {
+    text-align: right;
+    margin-top: 15px;
+}
+.comment-write .btn.primary {
+    padding: 10px 25px;
+    font-size: 0.95rem;
+}
+
+/* ▼▼▼ [핵심 수정 3] 댓글 수정창 관련 스타일 추가/변경 ▼▼▼ */
+.edit-textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    resize: vertical;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+    min-height: 100px; /* 수정창 높이도 동일하게 변경 */
+}
+.edit-actions {
+    text-align: right;
+    margin-top: 10px;
+}
+.edit-actions button {
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-weight: 500;
+}
+.edit-actions .btn-submit {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* === 기타 버튼 스타일 === */
+.btn.danger {
+    background-color: #DC3545;
+    color: white;
+}
+.btn.danger:hover {
+    background-color: #C82333;
+}
+/* ▼▼▼ [추가] list.jsp의 테이블 스타일 ▼▼▼ */
+.notice-table th {
+    white-space: nowrap; /* 헤더 텍스트 줄바꿈 방지 */
+}
+.notice-table tbody tr td {
+    padding: 0.5rem 0.75rem; /* 상하 여백(padding)을 줄여 높이를 낮춤 */
+    vertical-align: middle;
+}
+/* ▲▲▲ [추가] list.jsp의 테이블 스타일 ▲▲▲ */

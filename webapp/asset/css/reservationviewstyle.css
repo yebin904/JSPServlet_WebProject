@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+/* 기본 배경 설정 */
+body {
+    background-color: #f8f9fa;
+}
+
+/* --- 상단 서브 메뉴 --- */
+.board-sub-header {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sub-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.sub-header-inner a {
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+.sub-header-inner a:hover {
+    color: #6C9A8B;
+}
+/* 현재 활성화된 메뉴에 .active 클래스 추가 시 적용 */
+.sub-header-inner a.active {
+    color: #6C9A8B;
+    border-bottom-color: #6C9A8B;
+}
+
+/* --- 메인 콘텐츠 컨테이너 --- */
+#main {
+    max-width: 800px;
+    margin: 30px auto 40px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+#main h1 {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* --- 예약 정보 테이블 스타일 --- */
+#view {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 2px solid #333;
+}
+
+#view th, #view td {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+}
+
+#view th {
+    width: 180px; /* 라벨 너비 고정 */
+    background-color: #f8f9fa;
+    text-align: center;
+    font-weight: 500;
+    color: #333;
+}
+
+#view td {
+    color: #555;
+}
+
+/* --- 하단 버튼 --- */
+#main > div:last-of-type {
+    display: flex;
+    justify-content: flex-end; /* 버튼을 오른쪽으로 정렬 */
+    margin-top: 30px;
+}
+
+.back {
+    min-width: 100px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.back:hover {
+    background-color: #e2e6ea;
+}

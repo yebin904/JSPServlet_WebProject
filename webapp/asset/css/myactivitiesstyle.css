@@ -1,0 +1,227 @@
+	/* 기본 배경 설정 */
+	body {
+	    background-color: #f8f9fa;
+	}
+	
+	/* --- 상단 서브 메뉴 --- */
+	.board-sub-header {
+	    width: 100%;
+	    background-color: #fff;
+	    border-bottom: 1px solid #e0e0e0;
+	}
+	.sub-header-inner {
+	    max-width: 1100px;
+	    margin: 0 auto;
+	    display: flex;
+	}
+	.sub-header-inner a {
+	    padding: 15px 20px;
+	    text-decoration: none;
+	    color: #555;
+	    font-weight: 500;
+	    border-bottom: 3px solid transparent;
+	    transition: color 0.2s, border-color 0.2s;
+	}
+	.sub-header-inner a:hover, .sub-header-inner a.active {
+	    color: #6C9A8B;
+	    border-bottom-color: #6C9A8B;
+	}
+	
+	/* --- 메인 콘텐츠 컨테이너 --- */
+	#main {
+	    max-width: 1100px;
+	    margin: 30px auto 40px auto;
+	    padding: 40px;
+	    background-color: #fff;
+	    border-radius: 12px;
+	    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+	}
+	#main h1 {
+	    margin-bottom: 30px;
+	    font-size: 1.8rem;
+	    font-weight: 600;
+	}
+	
+	/* --- 테이블 & 목록 스타일 (수정) --- */
+#list {
+    width: 100%;
+    /* border-radius를 적용하기 위해 collapse 대신 separate 사용 */
+    border-collapse: separate; 
+    border-spacing: 0;
+    font-size: 0.95rem;
+    /* 컨테이너에 맞춰 모서리를 둥글게 (main의 12px보다 작게 설정) */
+    border-radius: 8px; 
+    /* 내부 요소가 둥근 모서리를 넘어가지 않도록 설정 */
+    overflow: hidden; 
+}
+
+/* 헤더(th) 공통 스타일 (수정) */
+#list th {
+    padding: 15px 10px;
+    font-weight: 500;
+    color: #555;
+    /* 테이블 전체에 외곽선이 생기므로 th의 상단 선은 제거 */
+    /* border-top: 1px solid #ddd; */ 
+    border-bottom: 2px solid #ddd;
+    background-color: #fdfdfd; /* 헤더 배경색을 살짝 주면 더 좋습니다 (선택 사항) */
+}
+	
+	/* (핵심) 각 컬럼 너비 및 정렬 지정 */
+	/* 1열: 게시판 이름 */
+	/* (핵심) 각 컬럼 너비 및 정렬 지정 (수정) */
+/* width 속성을 모두 제거하여 내용에 맞게 자동 조절되도록 합니다. */
+
+/* 1열: 예약번호 */
+	#list th:nth-child(1), #list .data-row td:nth-child(1) {
+    min-width: 100px; /* 최소 너비 지정 (선택 사항) */
+    text-align: center; 
+	}
+	/* 2열: 차종 */
+	#list th:nth-child(2), #list .data-row td:nth-child(2) {
+    min-width: 200px; /* 최소 너비 지정 (선택 사항) */
+    text-align: center; 
+	}
+	/* 3열: 차량모델 */
+	#list th:nth-child(3), #list .data-row td:nth-child(3) {
+    min-width: 200px; /* 최소 너비 지정 (선택 사항) */
+    text-align: center; 
+	}
+	
+	/* 헤더(th) 공통 스타일 */
+	#list th {
+	    padding: 15px 10px;
+	    font-weight: 500;
+	    color: #555;
+	    border-top: 1px solid #ddd;
+	    border-bottom: 2px solid #ddd;
+	}
+	
+	/* 데이터 행(tr) 공통 스타일 */
+	.data-row td {
+	    padding: 18px 10px;
+	    vertical-align: middle;
+	}
+	
+	/* 제목 링크 스타일 */
+	.post-title a {
+	    color: #337ab7;
+	    text-decoration: none;
+	    font-weight: 500;
+	}
+	.post-title a:hover {
+	    text-decoration: underline;
+	}
+	
+	/* 댓글 내용이 표시되는 행 스타일 */
+	.comment-details-row td {
+	    padding: 15px 20px 20px 20px;
+	    background-color: #f9f9f9;
+	    font-size: 0.9rem;
+	    color: #555;
+	    text-align: left; /* 댓글 내용 왼쪽 정렬 */
+	    border-bottom: 1px solid #f0f0f0;
+	}
+	
+	/* --- 페이지바 스타일 --- */
+	#pagebar {
+	    display: flex;
+	    justify-content: center;
+	    gap: 8px;
+	    align-items: center;
+	    margin-top: 30px;
+	}
+	#pagebar a, #pagebar strong {
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    text-decoration: none;
+	    font-weight: 500;
+	    transition: background-color 0.2s, color 0.2s;
+	}
+	#pagebar a {
+	    width: 34px;
+	    height: 34px;
+	    border-radius: 50%;
+	    background-color: #f0f0f0;
+	    color: #555;
+	}
+	#pagebar strong {
+	    width: 34px;
+	    height: 34px;
+	    border-radius: 50%;
+	    background-color: #6C9A8B;
+	    color: white;
+	    cursor: default;
+	}
+	#pagebar a:first-child, #pagebar a:last-child {
+	    width: auto;
+	    height: auto;
+	    border-radius: 0;
+	    background-color: transparent;
+	    color: #555;
+	}
+	#pagebar a:hover {
+	    background-color: #6C9A8B;
+	    color: white;
+	}
+	#pagebar a:first-child:hover, #pagebar a:last-child:hover {
+	    background-color: transparent;
+	    color: #6C9A8B;
+	    text-decoration: underline;
+	}
+	
+	/* --- 페이지바 스타일 --- */
+	#pagebar {
+	    display: flex;
+	    justify-content: center;
+	    gap: 8px;
+	    align-items: center;
+	    margin: 25px 0;
+	}
+	
+	#pagebar a, #pagebar strong {
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    text-decoration: none;
+	    font-weight: 500;
+	    transition: background-color 0.2s, color 0.2s;
+	}
+	
+	#pagebar a {
+	    width: 34px;
+	    height: 34px;
+	    border-radius: 50%;
+	    background-color: #f0f0f0;
+	    color: #555;
+	}
+	
+	#pagebar strong {
+	    width: 34px;
+	    height: 34px;
+	    border-radius: 50%;
+	    background-color: #6C9A8B;
+	    color: white;
+	    cursor: default;
+	}
+	
+	#pagebar a:first-child,
+	#pagebar a:last-child {
+	    width: auto;
+	    height: auto;
+	    border-radius: 0;
+	    background-color: transparent;
+	    color: #555;
+	}
+	
+	#pagebar a:hover {
+	    background-color: #6C9A8B;
+	    color: white;
+	}
+	
+	#pagebar a:first-child:hover,
+	#pagebar a:last-child:hover {
+	    background-color: transparent;
+	    color: #6C9A8B;
+	    text-decoration: underline;
+	}

@@ -1,0 +1,696 @@
+/* ==============================================
+   ★ 여행 루트 추천 게시판 통합 스타일 (Trip Project)
+    / List / View / Add / Edit 전용
+   - 2025 Version
+============================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    color: #333;
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+
+/* ================== TABLE (LIST) ================== */
+.board-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+.board-list th {
+    border-top: 2px solid #333;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    font-weight: 600;
+    background-color: #f9f9f9;
+}
+.board-list td {
+    padding: 15px 10px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+.board-list tr:hover {
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+.board-list .title {
+    text-align: left;
+}
+
+/* ================== SEARCH + PAGING ================== */
+.board-bottom {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.search-box input {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.search-box button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+.paging {
+    font-size: 0.95rem;
+}
+.write-btn button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.write-btn button:hover {
+    background-color: #0069d9;
+}
+
+/* ================== POST VIEW ================== */
+.post-info {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+.content-area {
+    line-height: 1.8;
+    padding: 20px 0;
+    border-top: 2px solid #333;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+.image-area img {
+    max-width: 250px;
+    height: auto;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+/* ================== 버튼 배치 (view.jsp) ================== */
+
+/* 추천 & 스크랩 */
+.btn-action-area {
+    text-align: center;
+    margin: 20px 0 10px 0;
+}
+#btn-like, #btn-scrap {
+    padding: 8px 18px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    background-color: #fff;
+    cursor: pointer;
+    margin: 5px 8px;
+    transition: 0.2s;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+#btn-like.active, #btn-scrap.active {
+    background-color: #007BFF;
+    color: white;
+    border-color: #007BFF;
+}
+#btn-like:hover, #btn-scrap:hover {
+    border-color: #007BFF;
+    color: #007BFF;
+}
+
+/* 목록/수정/삭제 */
+.btn-area {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin: 15px 0 35px 0;
+}
+
+.btn-area a {
+    display: inline-block;
+    padding: 7px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-list {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+}
+.btn-edit {
+    background-color: #007BFF;
+    color: white;
+}
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-list:hover { background-color: #e9ecef; }
+.btn-edit:hover { background-color: #0069d9; }
+.btn-delete:hover { background-color: #c82333; }
+
+
+/* ================== FORM (ADD / EDIT) ================== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+form label {
+    font-weight: bold;
+    font-size: 1.05rem;
+}
+form input[type=text],
+form input[type=number],
+form select,
+form textarea,
+form input[type=file] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    width: 100%;
+}
+form textarea {
+    height: 300px;
+    resize: vertical;
+}
+.btn-area .btn-submit,
+.btn-area .btn-cancel {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-submit {
+    background-color: #007BFF;
+    color: #fff;
+}
+.btn-cancel {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+}
+.btn-submit:hover { background-color: #0069d9; }
+.btn-cancel:hover { background-color: #e9ecef; }
+
+/* ================== COMMENTS ================== */
+.comment-section {
+    border-top: 2px solid #333;
+    padding-top: 30px;
+    margin-top: 50px;
+}
+.comment-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+.comment-item {
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+.comment-item b {
+    font-weight: 600;
+}
+.comment-content {
+    margin-top: 5px;
+}
+.comment-input textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    padding: 10px;
+    font-size: 1rem;
+}
+.comment-input button {
+    margin-top: 10px;
+    float: right;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+.comment-input button:hover {
+    background-color: #0069d9;
+}
+.page-btn {
+    margin: 0 2px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+.page-btn.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .container { width: 95%; }
+    .board-bottom { flex-direction: column; align-items: flex-start; }
+    form textarea { height: 200px; }
+}
+
+/* ================== 이미지 미리보기 (edit.jsp) ================== */
+.image-preview {
+    display: flex;
+    flex-wrap: wrap;          /* 한 줄에 다 안 들어오면 다음 줄로 */
+    gap: 10px;                /* 이미지 간격 */
+    margin-bottom: 10px;
+    align-items: flex-start;
+}
+
+.image-preview img {
+    width: 180px;
+    height: 180px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* ================== VIEW - 이미지 갤러리 ================== */
+.image-area {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;              /* 가로 스크롤 허용 */
+    scroll-behavior: smooth;       /* 부드러운 스크롤 */
+    padding: 10px 0;
+    margin: 20px 0;
+}
+
+/* 스크롤바 숨기기 (웹킷, 파이어폭스, 엣지 공통 적용) */
+.image-area::-webkit-scrollbar {
+    display: none;
+}
+.image-area {
+    -ms-overflow-style: none;      /* IE/Edge */
+    scrollbar-width: none;         /* Firefox */
+}
+
+/* 이미지 스타일 */
+.image-area img {
+    flex: 0 0 auto;                /* 줄바꿈 없이 고정 폭 유지 */
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: grab;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* 마우스로 끌기 느낌 */
+.image-area img:active {
+    cursor: grabbing;
+}
+
+/* hover 효과 */
+.image-area img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* ================== VIEW - 이미지 갤러리 ================== */
+.image-area {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+    margin: 25px 0;
+    justify-content: flex-start;
+}
+.image-area::-webkit-scrollbar { display: none; }
+.image-area { -ms-overflow-style: none; scrollbar-width: none; }
+
+.image-area img {
+    flex: 0 0 auto;
+    width: 220px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+.image-area img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* ================== 이미지 모달 ================== */
+.image-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;          /* ✅ 세로 중앙 정렬 */
+    justify-content: center;      /* ✅ 가로 중앙 정렬 */
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    overflow: hidden;
+}
+
+/* 중앙 배치 유지 + 반응형 조절 */
+.image-modal img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    display: block;
+    margin: auto;                 /* ✅ 작은 이미지도 중앙에 */
+    border-radius: 10px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.25s ease-in;
+    
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: auto;
+}
+
+/* ================== 화살표 ================== */
+.modal-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.3rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s;
+    opacity: 0.8;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 50%;
+}
+
+/* 이미지 살짝 바깥쪽으로 이동 */
+.modal-arrow.left {
+    left: calc(50% - 48vw);
+}
+.modal-arrow.right {
+    right: calc(50% - 48vw);
+}
+
+.modal-arrow:hover {
+    opacity: 1;
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* 닫기 버튼 */
+.modal-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.7;
+}
+.modal-close:hover { opacity: 1; }
+
+/* 페이지 인디케이터 */
+.modal-counter {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    background-color: rgba(0,0,0,0.4);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* fade-in 애니메이션 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ================== 썸네일 좌우 화살표 ================== */
+.image-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #fff;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  padding: 8px 12px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+  transition: 0.2s;
+  opacity: 0.9;
+}
+
+.image-nav-arrow:hover {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.image-nav-arrow.left { left: 10px; }
+.image-nav-arrow.right { right: 10px; }
+
+/* 화살표 숨김 상태 */
+.image-nav-arrow.hidden {
+  display: none;
+}
+
+.image-area-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 25px 0;
+}
+
+.btn-area {
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  min-height: 40px; /* 버튼이 사라져도 높이 유지 */
+}
+
+.btn-list {
+  margin-right: auto; /* 왼쪽으로 보내기 */
+}
+
+.btn-edit-group {
+  display: flex;
+  gap: 8px;
+}
+
+
+/* =========================================================
+   [확장] 여행 루트 추천 게시판 목록(list) 전용 스타일
+ ========================================================= */
+
+/* === 게시판 목록 전체 === */
+.board-list {
+    width: 70%;
+    margin: 50px auto;
+    background-color: var(--surface, #fff);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border: 1px solid var(--border, #e5e5e5);
+}
+
+/* === 테이블 기본 === */
+.board-list table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.board-list th, 
+.board-list td {
+    text-align: center;
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border, #e9ecef);
+}
+
+.board-list th {
+    background-color: #f8f9fa;
+    font-weight: 700;
+    color: var(--text, #343a40);
+}
+
+.board-list tbody tr:hover {
+    background-color: #f1f7ff;
+    transition: background 0.25s ease;
+    cursor: pointer;
+}
+
+/* === 하단 영역 (검색, 페이징, 글쓰기) === */
+.board-bottom {
+    width: 70%;
+    margin: 25px auto 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 좌/우 끝으로 분배 */
+}
+
+/* 검색박스 왼쪽 정렬 */
+.search-box {
+    display: flex;
+    align-items: center;
+}
+
+/* 페이징 가운데 정렬 */
+.paging {
+    flex: 1; /* 남는 공간 차지 */
+    text-align: center;
+}
+
+/* 글쓰기 버튼 오른쪽 고정 */
+.write-btn {
+    text-align: right;
+}
+
+
+
+
+.search-box input {
+    border: 1px solid var(--border, #ddd);
+    border-radius: 20px 0 0 20px;
+    padding: 8px 14px;
+    outline: none;
+    width: 200px;
+    transition: all 0.2s;
+}
+.search-box input:focus {
+    border-color: var(--primary, #6c9a8b);
+    box-shadow: 0 0 0 3px rgba(108,154,139,0.15);
+}
+
+.search-box button {
+    border: none;
+    background-color: var(--primary, #6c9a8b);
+    color: white;
+    border-radius: 0 20px 20px 0;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.search-box button:hover {
+    background-color: var(--primary-dark, #558272);
+}
+
+/* === 페이징 === */
+.paging {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.paging a, .paging strong {
+    margin: 0 5px;
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--text-light, #6c757d);
+    border: 1px solid transparent;
+    padding: 5px 9px;
+    border-radius: 6px;
+}
+
+.paging a:hover {
+    background-color: rgba(108,154,139,0.1);
+    border-color: var(--primary, #6c9a8b);
+    color: var(--primary-dark, #558272);
+}
+
+.paging strong {
+    background-color: var(--primary, #6c9a8b);
+    color: #fff;
+    border-color: var(--primary, #6c9a8b);
+}
+
+/* === 글쓰기 버튼 === */
+.write-btn button {
+    background-color: var(--primary, #6c9a8b);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    font-weight: 600;
+}
+
+.write-btn button:hover {
+    background-color: var(--primary-dark, #558272);
+}
+
+.board-title {
+    width: 70%;
+    margin: 60px auto 10px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-dark, #3e655a);
+    /*border-left: 6px solid var(--primary, #6c9a8b);*/
+    padding-left: 12px;
+    text-align:center;
+}
+
+/* =========================================================
+   [추가] routepost/list.jsp 전용 테이블 높이·헤더 스타일 개선
+   기존 디자인 유지 + .notice-table 효과 통합
+ ========================================================= */
+
+/* 테이블 헤더 줄바꿈 방지 */
+.board-list table th {
+    white-space: nowrap; /* 헤더 텍스트 줄바꿈 방지 */
+}
+
+/* 테이블 셀 높이 조정 및 정렬 */
+.board-list table td {
+    padding: 0.5rem 0.75rem; /* 상하 여백 줄여서 높이 낮춤 */
+    vertical-align: middle;  /* 텍스트 수직 중앙 정렬 */
+}
+
+/* 표 전체 테두리 간격 줄이기 */
+.board-list table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+/* hover 시 강조 유지 */
+.board-list tbody tr:hover {
+    background-color: #f4f8f6;
+    transition: background 0.2s ease;
+}
+
+/* 테이블 전체 폭/정렬 유지 */
+.board-list {
+    width: 70%;
+    margin: 40px auto;
+    background-color: var(--surface, #fff);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border: 1px solid var(--border, #e5e5e5);
+}
+

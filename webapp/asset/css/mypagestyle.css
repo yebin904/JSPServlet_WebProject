@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+/* 기본 배경 설정 */
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+/* 마이페이지 전체 컨테이너 */
+#main {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+#main h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* 메뉴 테이블 스타일 */
+#view {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px; /* 메뉴 항목 사이의 세로 간격 */
+}
+
+/* 테이블의 불필요한 th 숨기기 */
+#view th {
+    display: none;
+}
+
+#view td {
+    padding: 0;
+}
+
+/* 메뉴 링크를 버튼처럼 스타일링 */
+#view a {
+    display: block; /* 링크를 블록 요소로 만들어 전체 영역을 차지하게 함 */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    background-color: #f8f9fa;
+    transition: all 0.2s ease-in-out;
+}
+
+/* 마우스를 올렸을 때 효과 */
+#view a:hover {
+    border-color: #6C9A8B;
+    background-color: #F0F5F4; /* 연한 녹색 배경 */
+    color: #6C9A8B;
+    transform: translateY(-2px); /* 살짝 위로 떠오르는 효과 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}

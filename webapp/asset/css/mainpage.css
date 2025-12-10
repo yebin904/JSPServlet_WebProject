@@ -1,0 +1,214 @@
+/* /asset/css/mainpage.css */
+
+/* ========== 전체 레이아웃 ========== */
+body {
+    font-family: Pretendard, sans-serif;
+}
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.main-left-content {
+    width: 900px;
+    flex-shrink: 0;
+}
+.main-right-sidebar {
+    width: 320px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 20px;
+}
+
+/* ▼▼▼ [추가] 메인 배너 스타일 ▼▼▼ */
+.main-banner .carousel-inner {
+    border-radius: 16px;
+}
+.main-banner .carousel-item img {
+    height: 400px; /* 모든 배너 높이 통일 */
+    object-fit: cover; /* 이미지가 잘리더라도 비율을 유지하며 꽉 채움 */
+    filter: brightness(70%); /* 이미지 어둡게 */
+}
+.main-banner .carousel-caption {
+    bottom: 50px;
+    left: 50px;
+    right: auto;
+    text-align: left;
+}
+.main-banner .carousel-caption h2 {
+    font-size: 2.5rem;
+}
+.main-banner .carousel-caption p {
+    font-size: 1.2rem;
+}
+
+/* ========== 인기 여행지 랭킹 위젯 ========== */
+.ranking-widget {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #e9ecef;
+}
+.ranking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+.ranking-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #343a40;
+}
+.ranking-header .date {
+    font-size: 0.85rem;
+    color: #868e96;
+}
+.ranking-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.ranking-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 5px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+.ranking-item:hover {
+    background-color: #f8f9fa;
+}
+.ranking-item .rank {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #495057;
+    width: 30px;
+}
+.ranking-item .name {
+    flex-grow: 1;
+    font-size: 1rem;
+}
+.ranking-item .change {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.9rem;
+}
+.ranking-item .change.up { color: #e03131; }
+.ranking-item .change.down { color: #1971c2; }
+.ranking-item .change.none { color: #868e96; }
+
+/* ========== 통계 섹션 ========== */
+.main-stats {
+    margin-top: 20px;
+}
+.stats-grid {
+    display: grid;
+    /* ▼▼▼ [수정] 2열에서 1열(세로)로 변경하여 레이아웃 깨짐 방지 ▼▼▼ */
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+.stat-item {
+    background-color: #ffffff;
+    padding: 20px 15px;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 120px;
+}
+.stat-item .icon {
+    font-size: 2rem;
+    color: #6C9A8B;
+    margin-bottom: 10px;
+}
+.stat-value {
+    font-size: 1.6rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+.stat-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* ========== AI 추천루트 만족도 (별점) 스타일 ========== */
+.stat-rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+    height: 31px;
+}
+.stat-rating .stars {
+    color: #fcc419;
+    font-size: 1.4rem;
+}
+.stat-rating .score {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #495057;
+}
+
+/* ========== 날씨 섹션 ========== */
+.weather-section {
+    padding-top: 40px;
+}
+.weather-header {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.weather-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+.weather-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #e9ecef;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.weather-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.weather-card .city {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 15px;
+}
+.weather-card .icon {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    color: #6C9A8B;
+}
+.weather-card .temp {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #212929;
+}
+.weather-card .temp span {
+    font-size: 1.5rem;
+    font-weight: normal;
+    vertical-align: super;
+    margin-left: 2px;
+}
